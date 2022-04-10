@@ -16,8 +16,22 @@ Most of our testing procedures were performed using the inbuilt debugging featur
 ## Group Contributions
 Majority of our code and debugging was worked on together during labs and zoom sessions. 
 **Luke**: Luke worked on the first section, creating an interface with the serial ports and creating integral modules to be used in the later parts.
+
 **Emily**: Emily worked on the third section, creating songs to be played, as well as, working on some functions for the second section. Emily also modularising our code, creating individual files and functions for each section.
+
 **Tara**: Tara worked on the second section, working with sections from the rest of the program to create new functions. Tara also worked on the README file.
+
+
+## User Instructions
+**1.0 Serial With Interupts**: 
+
+**2.0 Serial Command Parser**: The Serial Command Parser takes an input via a serial command. The input must consist of a letter 'L', 'S' or 'M', followed by a specified paramtere.
+
+***2.1 LED On***: The printLED function accepts a parameter consisting of a number between 0-8. The function will then turn on that specified LED (e.g. number 6 will turn on only the sixth LED)
+
+***2.2 SevenSeg On***: The print7seg function accpets a single digit hexadecimal number (between 0-F). The function will then display the given number on the seven segment displays.
+
+**3.0 Music Module/2.3 Play Sound**: 
 
 
 
