@@ -44,7 +44,7 @@ int playing;
 char inputstring[8];
 char outputstring[8];
 char end_of_string[3];
-char errorstring[100];
+char errorstring[200];
 int stringdone;
 int setting;
 unsigned int i;

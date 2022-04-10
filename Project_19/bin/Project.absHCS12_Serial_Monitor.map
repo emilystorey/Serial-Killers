@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "\\Mac\Home\Documents\Project_19\bin\Project.absHCS12_Serial_Monitor.abs"
+PROGRAM "\\Mac\Home\Desktop\newTronFolder\Serial-Killers\Project_19\bin\Project.absHCS12_Serial_Monitor.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -380,12 +380,12 @@ Section Name                    Size  Type     From       To       Segment
 .abs_section_ffd4                  2     R     0xFFD4     0xFFD5   .absSeg341
 .abs_section_ffcc                  2     R     0xFFCC     0xFFCD   .absSeg342
 .abs_section_ffe4                  2     R     0xFFE4     0xFFE5   .absSeg343
-.common                          131   R/W     0x1100     0x1182   RAM
+.common                          231   R/W     0x1100     0x11E6   RAM
 .vectSeg344_vect                   2     R     0xFFFE     0xFFFF   .vectSeg344
 
 Summary of section sizes per section type:
 READ_ONLY (R):         6CE (dec:     1742)
-READ_WRITE (R/W):      183 (dec:      387)
+READ_WRITE (R/W):      1E7 (dec:      487)
 NO_INIT (N/I):         190 (dec:      400)
 
 *********************************************************************************************
@@ -761,9 +761,9 @@ MODULE:                 -- main.c.o --
      inputstring                               1106       8       8       6   .common     
      outputstring                              110E       8       8       2   .common     
      end_of_string                             1116       3       3       3   .common     
-     errorstring                               1119      64     100       1   .common     
-     stringdone                                117D       2       2       4   .common     
-     setting                                   117F       2       2       4   .common     
+     errorstring                               1119      C8     200       1   .common     
+     stringdone                                11E1       2       2       4   .common     
+     setting                                   11E3       2       2       4   .common     
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
      _Startup                                  C000       6       6       0   .init       
@@ -794,7 +794,7 @@ MODULE:                 -- playSong.c.o --
      speakerISR                                C546       8       8       1   .text       
 - VARIABLES:
      _Vector_13                                FFE4       2       2       0   .abs_section_ffe4
-     period                                    1181       2       2       3   .common     
+     period                                    11E5       2       2       3   .common     
 MODULE:                 -- checkIfPlaying.c.o --
 - PROCEDURES:
      checkIfPlaying                            C54E      8A     138       2   .text       
@@ -812,7 +812,7 @@ MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12dg256.c.o                            400      0      0
-  main.c.o                                   129    593     12
+  main.c.o                                   229    593     12
   Start12.c.o                                  0      6      0
   STRING.C.o (ansisi.lib)                      0     13      0
   print7seg.c.o                                0    285     57
@@ -1879,10 +1879,10 @@ OBJECT LIST SORTED BY ADDRESS
      inputstring                               1106       8       8       6   .common     
      outputstring                              110E       8       8       2   .common     
      end_of_string                             1116       3       3       3   .common     
-     errorstring                               1119      64     100       1   .common     
-     stringdone                                117D       2       2       4   .common     
-     setting                                   117F       2       2       4   .common     
-     period                                    1181       2       2       3   .common     
+     errorstring                               1119      C8     200       1   .common     
+     stringdone                                11E1       2       2       4   .common     
+     setting                                   11E3       2       2       4   .common     
+     period                                    11E5       2       2       3   .common     
      _Startup                                  C000       6       6       0   .init       
      STRING.helloMe.1                          C006       8       8       1   .rodata1    
      STRING.Error..parameter.aft.1             C00E      39      57       1   .rodata1    

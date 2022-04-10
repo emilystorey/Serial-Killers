@@ -7,7 +7,7 @@
 void print7seg(char parameter){
 
 char end_of_string[3];
-char errorstring[100];
+char errorstring[200];
 end_of_string[0]=0x0A;
 end_of_string[1]=0x0d;
 end_of_string[2]=0x00;

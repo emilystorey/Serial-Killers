@@ -8,7 +8,7 @@
 void printError(void){
 
 char end_of_string[3];
-char errorstring[100];
+char errorstring[200];
 
   int k;
   int l;
