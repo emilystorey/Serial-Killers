@@ -1,0 +1,53 @@
+#include <hidef.h>      /* common defines and macros */
+#include "derivative.h"      /* derivative-specific definitions */
+#include <stdlib.h>
+#include <stdio.h>
+#include "playSong.h" 
+#include "delay_ms.h"
+
+void playSong(unsigned int score[], unsigned int dur[]){
+  
+  
+ #define toggle 0x04 // value to toggle OC5 pin
+
+
+interrupt 13 void speakerISR(void);
+
+void happyBirthday(void){
+
+    unsigned int period;  
+
+    int j;
+     
+    asm("sei");
+    TSCR1 = 0x90; 	
+    TSCR2 = 0x07;
+    TIOS = 0x20;	
+   	TCTL1 = 0x04; 
+   	period = score[0];
+   	TIE = 0x20;	
+    TC5 = TCNT + period;  	
+   	EnableInterrupts;	
+    			
+    for(j = 0; j < 15; j++){	  	  	 		  
+     	    period = (score[j]);
+     	    delay_ms(dur[j]);	     	      	  		    	  		  			
+    }
+    	  
+   TCTL1 = 0; 
+}
+
+
+interrupt 13 void speakerISR(){
+          unsigned int period;
+        	TC5 = TC5 + period;
+}
+  
+
+ 
+ 
+ 
+ 
+ 
+  
+}
