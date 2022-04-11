@@ -14,9 +14,9 @@ Breakpoints: Using breakpoints throughout the code allowed us to see the functio
 
 ## Group Contributions
 Majority of our code and debugging was worked on together during labs and zoom sessions. 
-**Luke**: Luke worked on the first section, creating an interface with the serial ports and creating integral modules to be used in the later parts. He also worked on the second section and README file.
-**Emily**: Emily worked on the third section, creating songs to be played, as well as, working on some functions for the second section. Emily also modularised our code, creating individual files and functions for each section.
-**Tara**: Tara worked on the second section, working with sections from the rest of the program to create new functions. Tara also worked on the README file.
+ **Luke**: Luke worked on the first section, creating an interface with the serial ports and creating integral modules to be used in the later parts. He also worked on the second section and README file.
+ **Emily**: Emily worked on the third section, creating songs to be played, as well as, working on some functions for the second section. Emily also modularised our code, creating individual files and functions for each section.
+ **Tara**: Tara worked on the second section, working with sections from the rest of the program to create new functions. Tara also worked on the README file.
 
 ## Exercise 1 
 
@@ -84,10 +84,3 @@ If there is an unexpected character in the parameter section, the function will 
  
 
 
-
-
-○ The details about the project (group members, roles, responsibilities)
-○ High level information about the code - the function, how the program is broken down into
-modules.
-○ Instructions for the user
-○ Details about testing procedures
