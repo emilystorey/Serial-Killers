@@ -5,6 +5,7 @@ This assignment involved the development of individual modules in C code to prog
 - Storing serial inputs and Sending output buffer
 - Parsing serial commands
 - Playing a song on the speaker
+
 Our group decided we would create each module with a specific set of inputs and outputs in order to increase functionality and usage. We have also thoroughly commented on our code to ensure readability and understanding of the code between ourselves.
 
 
@@ -19,15 +20,12 @@ Most of our testing procedures were performed using the inbuilt debugging featur
 Majority of our code and debugging was worked on together during labs and zoom sessions. 
 
 **Luke**: 
-
 Luke worked on the first section, creating an interface with the serial ports and creating integral modules to be used in the later parts. He also worked on the second section and README file.
 
  **Emily**: 
- 
  Emily worked on the third section, creating songs to be played, as well as, working on some functions for the second section. Emily also modularised our code, creating individual files and functions for each section.
  
  **Tara**: 
- 
  Tara worked on the second section, working with sections from the rest of the program to create new functions. Tara also worked on the README file.
 
 
