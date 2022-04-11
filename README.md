@@ -31,13 +31,13 @@ Luke worked on the first section, creating an interface with the serial ports an
 
 ## Exercise 1 
 
-## High level information
+### High level information
 This exercise uses the serial interface to be able to store and send an array of 8bit characters to and from the HCS12. It uses a serial interrupt to receive data from the terminal and port H interrupt to communicate that the device needs to output an array to the terminal. The end of the string can be communicated by a changing variable.
 
-## Instructions
+### Instructions
 The user must first change the setting in the main to equal 1 to enable the first exercise. The user can then enter a string of characters and press enter to signify the end of the string, and this will be saved in the input string. The user can also press the last button on the HCS dragon board to send a pre saved string to the terminal. The user can change the test variable which will end the string if present in interrupt 25.
 
-## Discussion 
+### Discussion 
 How can you buffer the data (for receive and transmit)?
 At the current setting, we can buffer 8 characters to suit the requirements of task 2, however, this can be easily extended or shortened by changing the input and output string array length, and then changing the loop within the output interrupt function porthISR to match the length of the arrays.
 How long (roughly) does the interrupt handler take to service the interrupt.
@@ -46,7 +46,7 @@ The time to enter the interrupt  is approximately 3.75 us and to exit is 2.8us. 
 
 ## Exercise 2 
 
-## High level information
+### High level information
 This function repeatedly takes input commands and enacts functions based on the input. The Serial Command Parser takes an input via a serial command. The input must consist of a letter 'L', 'S' or 'M', in the first element followed by a specified parameter.
 
 If the first element of the input string is L, it completes the LED on function.
@@ -60,27 +60,27 @@ Music on: This function accepts a single integer, and plays Happy birthday throu
 
 If the first element of the input string is not one of the above characters, it prints an error message.
  
-## Instructions
+### Instructions
 The user must  first let setting=2 to begin this function. The user must then input a character and then a corresponding parameter into the terminal, followed by an enter to signify the end of the string. This will then activate the corresponding function. The user can enter repeated inputs.
 The user can enter L followed by a number between 1-8, then an enter to turn on that corresponding LED.
 The user can enter S, followed by a hex character and then enter to display that character on the 7 segment display.
 The user can enter M1 to play happy birthday, then M2 to play jingle bells on the speaker.
  
-## Discussion 
+### Discussion 
 How easy would it be to extend this to different types of messages? 
 This would not be difficult to extend this to different types of messages if it follows the same structure. By adding a new parameter, we could modularly add a corresponding function to perform the new operation.
 What ways could the parser fail? 
 This parser could fail if an incorrect first element which does not correspond to any function is entered. Then if the parameter is an invalid input, it could also fail. If the input is longer than 2 characters, it will also fail.
  
 ## Exercise 3 
-## High level information
+### High level information
 This function plays either of two songs, jingle bells and happy birthday through the speaker. It receives an input 1 or 2 from the user within exercise 2, and plays the corresponding song. The song is played via a PWM wave, where the period is determined by inversing the frequency of the clock, to find the time length of each cycle. Then by calculating the period of each key by inversing its frequency, we divide the period of the key frequency by the period of the clock and halving it to find the desired corresponding period for each note. 
 With the notes stores and the time period to play it for, it cycles through the array and plays each note for the corresponding period, forming a tune.
  
-## Instructions
+### Instructions
 The user must input M1 into serial followed by an enter to play happy birthday and M2 to play jingle bells. They must wait until each song is finished to play the next song.
 
-## Discussion 
+### Discussion 
 What happens if a new tune is requested before the previous one finishes? 
 If a new tune is requested before the previous tune is complete, the program will not play the new tune, and when the current tune is finished, it will register that a new song is ready to be played.
 What happens if there are unexpected characters or parsing errors from the tune string?
