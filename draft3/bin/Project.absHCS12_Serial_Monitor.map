@@ -21,11 +21,11 @@ delay.c.o                               Model: SMALL,         Lang: ANSI-C
 playSong.c.o                            Model: SMALL,         Lang: ANSI-C
 print7seg.c.o                           Model: SMALL,         Lang: ANSI-C
 printError.c.o                          Model: SMALL,         Lang: ANSI-C
-printthisshit.c.o                       Model: SMALL,         Lang: ANSI-C
 serialRegisters.c.o                     Model: SMALL,         Lang: ANSI-C
 buttonSetup.c.o                         Model: SMALL,         Lang: ANSI-C
 inputError.c.o                          Model: SMALL,         Lang: ANSI-C
 musicError.c.o                          Model: SMALL,         Lang: ANSI-C
+PrintLED.c.o                            Model: SMALL,         Lang: ANSI-C
 
 *********************************************************************************************
 STARTUP SECTION
@@ -803,30 +803,30 @@ MODULE:                 -- printError.c.o --
      printError                                C59A      6C     108       1   .text       
 - VARIABLES:
      STRING.Input.must.start.wit.1             C09C      21      33       1   .rodata1    
-MODULE:                 -- printthisshit.c.o --
-- PROCEDURES:
-     printthisshit                             C606      8B     139       1   .text       
-     ErrorfordaLED                             C691      6A     106       1   .text       
-- VARIABLES:
-     STRING.Parameter.after.L.mu.1             C0BD      29      41       1   .rodata1    
 MODULE:                 -- serialRegisters.c.o --
 - PROCEDURES:
-     serialRegisters                           C6FB       E      14       1   .text       
+     serialRegisters                           C606       E      14       1   .text       
 - VARIABLES:
 MODULE:                 -- buttonSetup.c.o --
 - PROCEDURES:
-     buttonSetup                               C709       C      12       1   .text       
+     buttonSetup                               C614       C      12       1   .text       
 - VARIABLES:
 MODULE:                 -- inputError.c.o --
 - PROCEDURES:
-     inputError                                C715      6C     108       1   .text       
+     inputError                                C620      6C     108       1   .text       
 - VARIABLES:
-     STRING.Input.is.too.long.1                C0E6      12      18       1   .rodata1    
+     STRING.Input.is.too.long.1                C0BD      12      18       1   .rodata1    
 MODULE:                 -- musicError.c.o --
 - PROCEDURES:
-     musicError                                C781      6C     108       1   .text       
+     musicError                                C68C      6C     108       1   .text       
 - VARIABLES:
-     STRING.Parameter.after.M.mu.1             C0F8      21      33       1   .rodata1    
+     STRING.Parameter.after.M.mu.1             C0CF      21      33       1   .rodata1    
+MODULE:                 -- PrintLED.c.o --
+- PROCEDURES:
+     PrintLED                                  C6F8      8B     139       1   .text       
+     ErrorLED                                  C783      6A     106       1   .text       
+- VARIABLES:
+     STRING.Parameter.after.L.mu.1             C0F0      29      41       1   .rodata1    
 
 *********************************************************************************************
 MODULE STATISTIC
@@ -841,11 +841,11 @@ MODULE STATISTIC
   playSong.c.o                                 2     91      2
   print7seg.c.o                                0    285     50
   printError.c.o                               0    108     33
-  printthisshit.c.o                            0    245     41
   serialRegisters.c.o                          0     14      0
   buttonSetup.c.o                              0     12      0
   inputError.c.o                               0    108     18
   musicError.c.o                               0    108     33
+  PrintLED.c.o                                 0    245     41
   other                                      256      2      0
 
 *********************************************************************************************
@@ -853,15 +853,15 @@ SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
   main exercise1 exercise2 serialISR porthISR strcpy checkIfPlaying delay 
-  playSong speakerISR print7seg printError printthisshit ErrorfordaLED 
-  serialRegisters buttonSetup inputError musicError 
+  playSong speakerISR print7seg printError serialRegisters buttonSetup 
+  inputError musicError PrintLED ErrorLED 
 SECTION: ".init"
   _Startup 
 SECTION: ".rodata1"
   STRING.helloMe.1 STRING.I.m.ready.to.recieve.1 STRING.I.hope.you.like.the..2 
   STRING.Parameter.after.S.mu.1 STRING.Input.must.start.wit.1 
-  STRING.Parameter.after.L.mu.1 STRING.Input.is.too.long.1 
-  STRING.Parameter.after.M.mu.1 
+  STRING.Input.is.too.long.1 STRING.Parameter.after.M.mu.1 
+  STRING.Parameter.after.L.mu.1 
 SECTION: ".abs_section_8"
   _PORTE 
 SECTION: ".abs_section_9"
@@ -1915,9 +1915,9 @@ OBJECT LIST SORTED BY ADDRESS
      STRING.I.hope.you.like.the..2             C044      26      38       1   .rodata1    
      STRING.Parameter.after.S.mu.1             C06A      32      50       1   .rodata1    
      STRING.Input.must.start.wit.1             C09C      21      33       1   .rodata1    
-     STRING.Parameter.after.L.mu.1             C0BD      29      41       1   .rodata1    
-     STRING.Input.is.too.long.1                C0E6      12      18       1   .rodata1    
-     STRING.Parameter.after.M.mu.1             C0F8      21      33       1   .rodata1    
+     STRING.Input.is.too.long.1                C0BD      12      18       1   .rodata1    
+     STRING.Parameter.after.M.mu.1             C0CF      21      33       1   .rodata1    
+     STRING.Parameter.after.L.mu.1             C0F0      29      41       1   .rodata1    
      main                                      C119      21      33       1   .text       
      exercise1                                 C13A      20      32       1   .text       
      exercise2                                 C15A     1A3     419       4   .text       
@@ -1930,12 +1930,12 @@ OBJECT LIST SORTED BY ADDRESS
      speakerISR                                C475       8       8       1   .text       
      print7seg                                 C47D     11D     285       1   .text       
      printError                                C59A      6C     108       1   .text       
-     printthisshit                             C606      8B     139       1   .text       
-     ErrorfordaLED                             C691      6A     106       1   .text       
-     serialRegisters                           C6FB       E      14       1   .text       
-     buttonSetup                               C709       C      12       1   .text       
-     inputError                                C715      6C     108       1   .text       
-     musicError                                C781      6C     108       1   .text       
+     serialRegisters                           C606       E      14       1   .text       
+     buttonSetup                               C614       C      12       1   .text       
+     inputError                                C620      6C     108       1   .text       
+     musicError                                C68C      6C     108       1   .text       
+     PrintLED                                  C6F8      8B     139       1   .text       
+     ErrorLED                                  C783      6A     106       1   .text       
      _Vector_25                                FFCC       2       2       0   .abs_section_ffcc
      _Vector_21                                FFD4       2       2       0   .abs_section_ffd4
      _Vector_13                                FFE4       2       2       0   .abs_section_ffe4
@@ -1966,7 +1966,7 @@ main                      USES setting buttonSetup serialRegisters exercise1
                                 exercise2 
 exercise1                 USES outputcount inputcount outputstring 
                                 STRING.helloMe.1 strcpy end_of_string 
-exercise2                 USES stringdone inputstring inputError printthisshit 
+exercise2                 USES stringdone inputstring inputError PrintLED 
                                 print7seg exercise2 playing checkIfPlaying playSong 
                                 musicError printError 
 serialISR                 USES _SCI1SR1 _SCI1DRL outputcount inputstring 
@@ -1982,14 +1982,14 @@ print7seg                 USES _DDRAB _DDRJ _DDRP _PTJ _PTP _PORTAB
                                 STRING.Parameter.after.S.mu.1 strcpy _SCI1SR1 _SCI1DRL _PIFH 
 printError                USES _DDRAB _DDRP _PTP STRING.Input.must.start.wit.1 
                                 strcpy _SCI1SR1 _SCI1DRL _PIFH 
-printthisshit             USES _DDRAB _DDRP _PTP ErrorfordaLED _PORTAB 
-ErrorfordaLED             USES _DDRAB _DDRP _PTP STRING.Parameter.after.L.mu.1 
-                                strcpy _SCI1SR1 _SCI1DRL _PIFH 
 serialRegisters           USES _SCI1BD _SCI1CR1 _SCI1CR2 
 buttonSetup               USES _DDRH _PIEH _PPSH 
 inputError                USES _DDRAB _DDRP _PTP STRING.Input.is.too.long.1 
                                 strcpy _SCI1SR1 _SCI1DRL _PIFH 
 musicError                USES _DDRAB _DDRP _PTP STRING.Parameter.after.M.mu.1 
+                                strcpy _SCI1SR1 _SCI1DRL _PIFH 
+PrintLED                  USES _DDRAB _DDRP _PTP ErrorLED _PORTAB 
+ErrorLED                  USES _DDRAB _DDRP _PTP STRING.Parameter.after.L.mu.1 
                                 strcpy _SCI1SR1 _SCI1DRL _PIFH 
 _Vector_25                USES porthISR 
 _Vector_21                USES serialISR 
@@ -2016,9 +2016,9 @@ DEPENDENCY TREE
  |     |  | 
  |     |  +- strcpy               (see above)
  |     |     
- |     +- printthisshit       
+ |     +- PrintLED            
  |     |  | 
- |     |  +- ErrorfordaLED       
+ |     |  +- ErrorLED            
  |     |     | 
  |     |     +- strcpy               (see above)
  |     |        

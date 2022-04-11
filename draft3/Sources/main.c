@@ -9,7 +9,7 @@
 #include "checkIfPlaying.h"
 #include "serialRegisters.h"
 #include "buttonSetup.h"
-#include "printthisshit.h"
+#include "PrintLED.h"
 #include "inputError.h"
 #include "musicError.h"
 #define toggle 0x04 // value to toggle OC5 pin
@@ -35,14 +35,13 @@ interrupt 21 void serialISR(void);
 interrupt 25 void porthISR(void);
 void exercise1(void) ;
 void exercise2(void); 
-void printLED(char);
 void print7seg(char);  
 void printError(void);
 void delay(unsigned int time);
 void playSong(unsigned int score[], unsigned int dur[], int x);
 void checkIfPlaying(int playing);
 void LEDError(void);
-void printthisshit(char parameter);
+void PrintLED(char parameter);
 
 int outputcount, inputcount,playing, stringdone, setting, j;
 char inputstring[8];
@@ -54,7 +53,7 @@ int b;
             
 void main() {
 // Enter which exercise to demonstrate here:
-                                  setting=1; 
+                                  setting=2; 
 //  HPRIO = 0xD4;
   buttonSetup();
   serialRegisters();
@@ -101,12 +100,11 @@ void exercise2(void){
     
     if (inputstring[2] != 0x0B){
         inputError();
- 
     
     }
     // If L is found, call on function PrintLED 
     else if (inputstring[0]=='L'){      
-     printthisshit(inputstring[1]); 
+     PrintLED(inputstring[1]); 
      
     } 
   
