@@ -2,20 +2,16 @@
 # Tron 2 Assignment 2
 ## About our code
 This assignment involved the development of individual modules in C code to program the HCS12 microcontroller. Each module was developed with the intention of integration to perform several key functions. These key concepts include:
-
-**Storing serial inputs and Sending output buffer**
-
-**Parsing serial commands**
-
-**Playing a song on the speaker**
-
+- Storing serial inputs and Sending output buffer
+- Parsing serial commands
+- Playing a song on the speaker
 Our group decided we would create each module with a specific set of inputs and outputs in order to increase functionality and usage. We have also thoroughly commented on our code to ensure readability and understanding of the code between ourselves.
 
 
 ## Testing Procedures 
 Most of our testing procedures were performed using the inbuilt debugging features in CodeWarrior. These testing methods include:
-**Single Line Stepping**: Using the single line stepping feature allows for clear inspection of memory and the functionality of each line of code
 
+**Single Line Stepping**: Using the single line stepping feature allows for clear inspection of memory and the functionality of each line of code
 **Breakpoints**: Using breakpoints throughout the code allowed us to see the functionality of each module of code
 
 
