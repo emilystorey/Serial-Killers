@@ -12,8 +12,8 @@ Our group decided we would create each module with a specific set of inputs and 
 ## Testing Procedures 
 Most of our testing procedures were performed using the inbuilt debugging features in CodeWarrior. These testing methods include:
 
-**Single Line Stepping**: Using the single line stepping feature allows for clear inspection of memory and the functionality of each line of code
-**Breakpoints**: Using breakpoints throughout the code allowed us to see the functionality of each module of code
+- Single Line Stepping: Using the single line stepping feature allows for clear inspection of memory and the functionality of each line of code
+- Breakpoints: Using breakpoints throughout the code allowed us to see the functionality of each module of code
 
 
 ## Group Contributions
