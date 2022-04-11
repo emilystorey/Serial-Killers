@@ -2,7 +2,6 @@
 #include "derivative.h"      
 #include <stdlib.h>
 #include <stdio.h>
-#include "printLED.h"
 #include "print7seg.h"
 #include "playSong.h"
 #include "printError.h"
@@ -11,7 +10,8 @@
 #include "serialRegisters.h"
 #include "buttonSetup.h"
 #include "printthisshit.h"
-
+#include "inputError.h"
+#include "musicError.h"
 #define toggle 0x04 // value to toggle OC5 pin
 
 #define E 246.244
@@ -27,6 +27,8 @@
 #define DS 130.4171
 #define ZZ 20 
 
+void musicError(void);
+void inputError(void);
 void serialRegisters(void);
 void buttonSetup(void);
 interrupt 21 void serialISR(void);
@@ -48,10 +50,11 @@ char outputstring[8];
 char end_of_string[3];
 char errorstring[100];;
 unsigned int i;
+int b; 
             
 void main() {
 // Enter which exercise to demonstrate here:
-                                  setting=2; 
+                                  setting=1; 
 //  HPRIO = 0xD4;
   buttonSetup();
   serialRegisters();
@@ -89,14 +92,20 @@ void exercise2(void){
   stringdone=0;
  
   EnableInterrupts;
- 
+  inputstring[2] = 0x0B;
   // Continously loop and check the serial until instructed otherwise  
   for(;;) {
     while(stringdone==0){
+    
     } 
     
+    if (inputstring[2] != 0x0B){
+        inputError();
+ 
+    
+    }
     // If L is found, call on function PrintLED 
-    if (inputstring[0]=='L'){      
+    else if (inputstring[0]=='L'){      
      printthisshit(inputstring[1]); 
      
     } 
@@ -132,6 +141,8 @@ void exercise2(void){
       } 
       else{
       
+        musicError();
+      
       }                
    }
    
@@ -142,6 +153,7 @@ void exercise2(void){
        
     }
     stringdone=0;
+    inputstring[2] = 0x0B;
   }  
 }
 

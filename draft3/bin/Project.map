@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "\\Mac\Home\Documents\Project_19\bin\Project.abs"
+PROGRAM "\\Mac\Home\Desktop\newTronFolder\Serial-Killers\draft3\bin\Project.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -24,6 +24,8 @@ printError.c.o                          Model: SMALL,         Lang: ANSI-C
 printthisshit.c.o                       Model: SMALL,         Lang: ANSI-C
 serialRegisters.c.o                     Model: SMALL,         Lang: ANSI-C
 buttonSetup.c.o                         Model: SMALL,         Lang: ANSI-C
+inputError.c.o                          Model: SMALL,         Lang: ANSI-C
+musicError.c.o                          Model: SMALL,         Lang: ANSI-C
 
 *********************************************************************************************
 STARTUP SECTION
@@ -34,9 +36,9 @@ Entry point: 0xC000 (_Startup)
 SECTION-ALLOCATION SECTION
 Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
-.init                              6     R     0xC000     0xC005   ROM_C000
-.rodata1                         214     R     0xC006     0xC0DB   ROM_C000
-.text                           1510     R     0xC0DC     0xC6C1   ROM_C000
+.init                             16     R     0xC000     0xC00F   ROM_C000
+.rodata1                         265     R     0xC010     0xC118   ROM_C000
+.text                           1748     R     0xC119     0xC7EC   ROM_C000
 .stack                           256   R/W     0x1000     0x10FF   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
@@ -386,7 +388,7 @@ Section Name                    Size  Type     From       To       Segment
 .vectSeg344_vect                   2     R     0xFFFE     0xFFFF   .vectSeg344
 
 Summary of section sizes per section type:
-READ_ONLY (R):         6CA (dec:     1738)
+READ_ONLY (R):         7F5 (dec:     2037)
 READ_WRITE (R/W):      183 (dec:      387)
 NO_INIT (N/I):         190 (dec:      400)
 
@@ -486,10 +488,10 @@ MODULE:                 -- mc9s12dg256.c.o --
      _SCI0DRL                                    CF       1       1       0   .abs_section_cf
      _SCI1CR1                                    D2       1       1       1   .abs_section_d2
      _SCI1CR2                                    D3       1       1       2   .abs_section_d3
-     _SCI1SR1                                    D4       1       1      11   .abs_section_d4
+     _SCI1SR1                                    D4       1       1      15   .abs_section_d4
      _SCI1SR2                                    D5       1       1       0   .abs_section_d5
      _SCI1DRH                                    D6       1       1       0   .abs_section_d6
-     _SCI1DRL                                    D7       1       1      12   .abs_section_d7
+     _SCI1DRL                                    D7       1       1      16   .abs_section_d7
      _SPI0CR1                                    D8       1       1       0   .abs_section_d8
      _SPI0CR2                                    D9       1       1       0   .abs_section_d9
      _SPI0BR                                     DA       1       1       0   .abs_section_da
@@ -604,9 +606,9 @@ MODULE:                 -- mc9s12dg256.c.o --
      _PPSM                                      255       1       1       0   .abs_section_255
      _WOMM                                      256       1       1       0   .abs_section_256
      _MODRR                                     257       1       1       0   .abs_section_257
-     _PTP                                       258       1       1       4   .abs_section_258
+     _PTP                                       258       1       1       6   .abs_section_258
      _PTIP                                      259       1       1       0   .abs_section_259
-     _DDRP                                      25A       1       1       5   .abs_section_25a
+     _DDRP                                      25A       1       1       7   .abs_section_25a
      _RDRP                                      25B       1       1       0   .abs_section_25b
      _PERP                                      25C       1       1       0   .abs_section_25c
      _PPSP                                      25D       1       1       0   .abs_section_25d
@@ -619,7 +621,7 @@ MODULE:                 -- mc9s12dg256.c.o --
      _PERH                                      264       1       1       0   .abs_section_264
      _PPSH                                      265       1       1       1   .abs_section_265
      _PIEH                                      266       1       1       1   .abs_section_266
-     _PIFH                                      267       1       1       5   .abs_section_267
+     _PIFH                                      267       1       1       7   .abs_section_267
      _PTJ                                       268       1       1       3   .abs_section_268
      _PTIJ                                      269       1       1       0   .abs_section_269
      _DDRJ                                      26A       1       1       4   .abs_section_26a
@@ -686,7 +688,7 @@ MODULE:                 -- mc9s12dg256.c.o --
      _CAN4TXDLR                                 2BC       1       1       0   .abs_section_2bc
      _CAN4TXTBPR                                2BD       1       1       0   .abs_section_2bd
      _PORTAB                                      0       2       2      17   .abs_section_0
-     _DDRAB                                       2       2       2       6   .abs_section_2
+     _DDRAB                                       2       2       2       8   .abs_section_2
      _PARTID                                     1A       2       2       0   .abs_section_1a
      _TCNT                                       44       2       2       1   .abs_section_44
      _TC0                                        50       2       2       0   .abs_section_50
@@ -746,13 +748,13 @@ MODULE:                 -- mc9s12dg256.c.o --
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
 MODULE:                 -- main.c.o --
 - PROCEDURES:
-     main                                      C0DC      21      33       1   .text       
-     exercise1                                 C0FD      20      32       1   .text       
-     exercise2                                 C11D     18D     397       4   .text       
-     serialISR                                 C2AA      2D      45       1   .text       
-     porthISR                                  C2D7      42      66       1   .text       
+     main                                      C119      21      33       1   .text       
+     exercise1                                 C13A      20      32       1   .text       
+     exercise2                                 C15A     1A3     419       4   .text       
+     serialISR                                 C2FD      2D      45       1   .text       
+     porthISR                                  C32A      42      66       1   .text       
 - VARIABLES:
-     STRING.helloMe.1                          C006       8       8       1   .rodata1    
+     STRING.helloMe.1                          C010       8       8       1   .rodata1    
      _Vector_21                                FFD4       2       2       0   .abs_section_ffd4
      _Vector_25                                FFCC       2       2       0   .abs_section_ffcc
      outputcount                               1100       2       2       4   .common     
@@ -760,69 +762,79 @@ MODULE:                 -- main.c.o --
      playing                                   1104       2       2       3   .common     
      stringdone                                1106       2       2       4   .common     
      setting                                   1108       2       2       4   .common     
-     inputstring                               110A       8       8       5   .common     
+     inputstring                               110A       8       8       7   .common     
      outputstring                              1112       8       8       2   .common     
      end_of_string                             111A       3       3       3   .common     
      errorstring                               111D      64     100       1   .common     
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
-     _Startup                                  C000       6       6       0   .init       
+     _Startup                                  C000      10      16       0   .init       
 - VARIABLES:
 - LABELS:
      __SEG_END_SSTACK                          1100       0       0       1               
 MODULE:                 -- STRING.C.o (ansisi.lib) --
 - PROCEDURES:
-     strcpy                                    C319       D      13       6   .text       
+     strcpy                                    C36C       D      13       8   .text       
 - VARIABLES:
 MODULE:                 -- checkIfPlaying.c.o --
 - PROCEDURES:
-     checkIfPlaying                            C326      8A     138       3   .text       
+     checkIfPlaying                            C379      8A     138       3   .text       
 - VARIABLES:
-     STRING.I.m.ready.to.recieve.1             C00E      2C      44       1   .rodata1    
-     STRING.I.hope.you.like.the..2             C03A      26      38       1   .rodata1    
+     STRING.I.m.ready.to.recieve.1             C018      2C      44       1   .rodata1    
+     STRING.I.hope.you.like.the..2             C044      26      38       1   .rodata1    
 MODULE:                 -- delay.c.o --
 - PROCEDURES:
-     delay                                     C3B0      1F      31       1   .text       
+     delay                                     C403      1F      31       1   .text       
 - VARIABLES:
 MODULE:                 -- playSong.c.o --
 - PROCEDURES:
-     playSong                                  C3CF      53      83       1   .text       
-     speakerISR                                C422       8       8       1   .text       
+     playSong                                  C422      53      83       1   .text       
+     speakerISR                                C475       8       8       1   .text       
 - VARIABLES:
      _Vector_13                                FFE4       2       2       0   .abs_section_ffe4
      period                                    1181       2       2       3   .common     
 MODULE:                 -- print7seg.c.o --
 - PROCEDURES:
-     print7seg                                 C42A     11D     285       1   .text       
+     print7seg                                 C47D     11D     285       1   .text       
 - VARIABLES:
-     STRING.Parameter.after.S.mu.1             C060      32      50       1   .rodata1    
+     STRING.Parameter.after.S.mu.1             C06A      32      50       1   .rodata1    
 MODULE:                 -- printError.c.o --
 - PROCEDURES:
-     printError                                C547      6C     108       1   .text       
+     printError                                C59A      6C     108       1   .text       
 - VARIABLES:
-     STRING.Input.must.start.wit.1             C092      21      33       1   .rodata1    
+     STRING.Input.must.start.wit.1             C09C      21      33       1   .rodata1    
 MODULE:                 -- printthisshit.c.o --
 - PROCEDURES:
-     printthisshit                             C5B3      8B     139       1   .text       
-     ErrorfordaLED                             C63E      6A     106       1   .text       
+     printthisshit                             C606      8B     139       1   .text       
+     ErrorfordaLED                             C691      6A     106       1   .text       
 - VARIABLES:
-     STRING.Parameter.after.L.mu.1             C0B3      29      41       1   .rodata1    
+     STRING.Parameter.after.L.mu.1             C0BD      29      41       1   .rodata1    
 MODULE:                 -- serialRegisters.c.o --
 - PROCEDURES:
-     serialRegisters                           C6A8       E      14       1   .text       
+     serialRegisters                           C6FB       E      14       1   .text       
 - VARIABLES:
 MODULE:                 -- buttonSetup.c.o --
 - PROCEDURES:
-     buttonSetup                               C6B6       C      12       1   .text       
+     buttonSetup                               C709       C      12       1   .text       
 - VARIABLES:
+MODULE:                 -- inputError.c.o --
+- PROCEDURES:
+     inputError                                C715      6C     108       1   .text       
+- VARIABLES:
+     STRING.Input.is.too.long.1                C0E6      12      18       1   .rodata1    
+MODULE:                 -- musicError.c.o --
+- PROCEDURES:
+     musicError                                C781      6C     108       1   .text       
+- VARIABLES:
+     STRING.Parameter.after.M.mu.1             C0F8      21      33       1   .rodata1    
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12dg256.c.o                            400      0      0
-  main.c.o                                   129    573     12
-  Start12.c.o                                  0      6      0
+  main.c.o                                   129    595     12
+  Start12.c.o                                  0     16      0
   STRING.C.o (ansisi.lib)                      0     13      0
   checkIfPlaying.c.o                           0    138     82
   delay.c.o                                    0     31      0
@@ -832,6 +844,8 @@ MODULE STATISTIC
   printthisshit.c.o                            0    245     41
   serialRegisters.c.o                          0     14      0
   buttonSetup.c.o                              0     12      0
+  inputError.c.o                               0    108     18
+  musicError.c.o                               0    108     33
   other                                      256      2      0
 
 *********************************************************************************************
@@ -840,13 +854,14 @@ SECTION USE IN OBJECT-ALLOCATION SECTION
 SECTION: ".text"
   main exercise1 exercise2 serialISR porthISR strcpy checkIfPlaying delay 
   playSong speakerISR print7seg printError printthisshit ErrorfordaLED 
-  serialRegisters buttonSetup 
+  serialRegisters buttonSetup inputError musicError 
 SECTION: ".init"
   _Startup 
 SECTION: ".rodata1"
   STRING.helloMe.1 STRING.I.m.ready.to.recieve.1 STRING.I.hope.you.like.the..2 
   STRING.Parameter.after.S.mu.1 STRING.Input.must.start.wit.1 
-  STRING.Parameter.after.L.mu.1 
+  STRING.Parameter.after.L.mu.1 STRING.Input.is.too.long.1 
+  STRING.Parameter.after.M.mu.1 
 SECTION: ".abs_section_8"
   _PORTE 
 SECTION: ".abs_section_9"
@@ -1544,7 +1559,7 @@ OBJECT LIST SORTED BY ADDRESS
      Name                                      Addr   hSize   dSize     Ref    Section   RLIB
 ---------------------------------------------------------------------------------------------
      _PORTAB                                      0       2       2      17   .abs_section_0
-     _DDRAB                                       2       2       2       6   .abs_section_2
+     _DDRAB                                       2       2       2       8   .abs_section_2
      _PORTE                                       8       1       1       0   .abs_section_8
      _DDRE                                        9       1       1       0   .abs_section_9
      _PEAR                                        A       1       1       0   .abs_section_a
@@ -1671,10 +1686,10 @@ OBJECT LIST SORTED BY ADDRESS
      _SCI1BD                                     D0       2       2       2   .abs_section_d0
      _SCI1CR1                                    D2       1       1       1   .abs_section_d2
      _SCI1CR2                                    D3       1       1       2   .abs_section_d3
-     _SCI1SR1                                    D4       1       1      11   .abs_section_d4
+     _SCI1SR1                                    D4       1       1      15   .abs_section_d4
      _SCI1SR2                                    D5       1       1       0   .abs_section_d5
      _SCI1DRH                                    D6       1       1       0   .abs_section_d6
-     _SCI1DRL                                    D7       1       1      12   .abs_section_d7
+     _SCI1DRL                                    D7       1       1      16   .abs_section_d7
      _SPI0CR1                                    D8       1       1       0   .abs_section_d8
      _SPI0CR2                                    D9       1       1       0   .abs_section_d9
      _SPI0BR                                     DA       1       1       0   .abs_section_da
@@ -1801,9 +1816,9 @@ OBJECT LIST SORTED BY ADDRESS
      _PPSM                                      255       1       1       0   .abs_section_255
      _WOMM                                      256       1       1       0   .abs_section_256
      _MODRR                                     257       1       1       0   .abs_section_257
-     _PTP                                       258       1       1       4   .abs_section_258
+     _PTP                                       258       1       1       6   .abs_section_258
      _PTIP                                      259       1       1       0   .abs_section_259
-     _DDRP                                      25A       1       1       5   .abs_section_25a
+     _DDRP                                      25A       1       1       7   .abs_section_25a
      _RDRP                                      25B       1       1       0   .abs_section_25b
      _PERP                                      25C       1       1       0   .abs_section_25c
      _PPSP                                      25D       1       1       0   .abs_section_25d
@@ -1816,7 +1831,7 @@ OBJECT LIST SORTED BY ADDRESS
      _PERH                                      264       1       1       0   .abs_section_264
      _PPSH                                      265       1       1       1   .abs_section_265
      _PIEH                                      266       1       1       1   .abs_section_266
-     _PIFH                                      267       1       1       5   .abs_section_267
+     _PIFH                                      267       1       1       7   .abs_section_267
      _PTJ                                       268       1       1       3   .abs_section_268
      _PTIJ                                      269       1       1       0   .abs_section_269
      _DDRJ                                      26A       1       1       4   .abs_section_26a
@@ -1889,34 +1904,38 @@ OBJECT LIST SORTED BY ADDRESS
      playing                                   1104       2       2       3   .common     
      stringdone                                1106       2       2       4   .common     
      setting                                   1108       2       2       4   .common     
-     inputstring                               110A       8       8       5   .common     
+     inputstring                               110A       8       8       7   .common     
      outputstring                              1112       8       8       2   .common     
      end_of_string                             111A       3       3       3   .common     
      errorstring                               111D      64     100       1   .common     
      period                                    1181       2       2       3   .common     
-     _Startup                                  C000       6       6       0   .init       
-     STRING.helloMe.1                          C006       8       8       1   .rodata1    
-     STRING.I.m.ready.to.recieve.1             C00E      2C      44       1   .rodata1    
-     STRING.I.hope.you.like.the..2             C03A      26      38       1   .rodata1    
-     STRING.Parameter.after.S.mu.1             C060      32      50       1   .rodata1    
-     STRING.Input.must.start.wit.1             C092      21      33       1   .rodata1    
-     STRING.Parameter.after.L.mu.1             C0B3      29      41       1   .rodata1    
-     main                                      C0DC      21      33       1   .text       
-     exercise1                                 C0FD      20      32       1   .text       
-     exercise2                                 C11D     18D     397       4   .text       
-     serialISR                                 C2AA      2D      45       1   .text       
-     porthISR                                  C2D7      42      66       1   .text       
-     strcpy                                    C319       D      13       6   .text       
-     checkIfPlaying                            C326      8A     138       3   .text       
-     delay                                     C3B0      1F      31       1   .text       
-     playSong                                  C3CF      53      83       1   .text       
-     speakerISR                                C422       8       8       1   .text       
-     print7seg                                 C42A     11D     285       1   .text       
-     printError                                C547      6C     108       1   .text       
-     printthisshit                             C5B3      8B     139       1   .text       
-     ErrorfordaLED                             C63E      6A     106       1   .text       
-     serialRegisters                           C6A8       E      14       1   .text       
-     buttonSetup                               C6B6       C      12       1   .text       
+     _Startup                                  C000      10      16       0   .init       
+     STRING.helloMe.1                          C010       8       8       1   .rodata1    
+     STRING.I.m.ready.to.recieve.1             C018      2C      44       1   .rodata1    
+     STRING.I.hope.you.like.the..2             C044      26      38       1   .rodata1    
+     STRING.Parameter.after.S.mu.1             C06A      32      50       1   .rodata1    
+     STRING.Input.must.start.wit.1             C09C      21      33       1   .rodata1    
+     STRING.Parameter.after.L.mu.1             C0BD      29      41       1   .rodata1    
+     STRING.Input.is.too.long.1                C0E6      12      18       1   .rodata1    
+     STRING.Parameter.after.M.mu.1             C0F8      21      33       1   .rodata1    
+     main                                      C119      21      33       1   .text       
+     exercise1                                 C13A      20      32       1   .text       
+     exercise2                                 C15A     1A3     419       4   .text       
+     serialISR                                 C2FD      2D      45       1   .text       
+     porthISR                                  C32A      42      66       1   .text       
+     strcpy                                    C36C       D      13       8   .text       
+     checkIfPlaying                            C379      8A     138       3   .text       
+     delay                                     C403      1F      31       1   .text       
+     playSong                                  C422      53      83       1   .text       
+     speakerISR                                C475       8       8       1   .text       
+     print7seg                                 C47D     11D     285       1   .text       
+     printError                                C59A      6C     108       1   .text       
+     printthisshit                             C606      8B     139       1   .text       
+     ErrorfordaLED                             C691      6A     106       1   .text       
+     serialRegisters                           C6FB       E      14       1   .text       
+     buttonSetup                               C709       C      12       1   .text       
+     inputError                                C715      6C     108       1   .text       
+     musicError                                C781      6C     108       1   .text       
      _Vector_25                                FFCC       2       2       0   .abs_section_ffcc
      _Vector_21                                FFD4       2       2       0   .abs_section_ffd4
      _Vector_13                                FFE4       2       2       0   .abs_section_ffe4
@@ -1931,7 +1950,7 @@ STRING.C.o (ansisi.lib):
   strchr strrchr strspn strcspn strpbrk strstr strtok strcoll strxfrm 
 NOT USED VARIABLES
 main.c.o:
-  j i 
+  j i b 
 STRING.C.o (ansisi.lib):
   STRING..1 next.2 
 
@@ -1947,8 +1966,9 @@ main                      USES setting buttonSetup serialRegisters exercise1
                                 exercise2 
 exercise1                 USES outputcount inputcount outputstring 
                                 STRING.helloMe.1 strcpy end_of_string 
-exercise2                 USES stringdone inputstring printthisshit print7seg 
-                                exercise2 playing checkIfPlaying playSong printError 
+exercise2                 USES stringdone inputstring inputError printthisshit 
+                                print7seg exercise2 playing checkIfPlaying playSong 
+                                musicError printError 
 serialISR                 USES _SCI1SR1 _SCI1DRL outputcount inputstring 
                                 setting _SCI1CR2 stringdone 
 porthISR                  USES _SCI1SR1 errorstring outputstring _SCI1DRL 
@@ -1967,6 +1987,10 @@ ErrorfordaLED             USES _DDRAB _DDRP _PTP STRING.Parameter.after.L.mu.1
                                 strcpy _SCI1SR1 _SCI1DRL _PIFH 
 serialRegisters           USES _SCI1BD _SCI1CR1 _SCI1CR2 
 buttonSetup               USES _DDRH _PIEH _PPSH 
+inputError                USES _DDRAB _DDRP _PTP STRING.Input.is.too.long.1 
+                                strcpy _SCI1SR1 _SCI1DRL _PIFH 
+musicError                USES _DDRAB _DDRP _PTP STRING.Parameter.after.M.mu.1 
+                                strcpy _SCI1SR1 _SCI1DRL _PIFH 
 _Vector_25                USES porthISR 
 _Vector_21                USES serialISR 
 _Vector_13                USES speakerISR 
@@ -1988,6 +2012,10 @@ DEPENDENCY TREE
  |  |       
  |  +- exercise2           
  |     | 
+ |     +- inputError          
+ |     |  | 
+ |     |  +- strcpy               (see above)
+ |     |     
  |     +- printthisshit       
  |     |  | 
  |     |  +- ErrorfordaLED       
@@ -2006,6 +2034,10 @@ DEPENDENCY TREE
  |     |  | 
  |     |  +- delay               
  |     |       
+ |     +- musicError          
+ |     |  | 
+ |     |  +- strcpy               (see above)
+ |     |     
  |     +- printError          
  |        | 
  |        +- strcpy               (see above)
@@ -2032,6 +2064,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 7
-Total size of all blocks to be downloaded: 1738
+Number of blocks to be downloaded: 6
+Total size of all blocks to be downloaded: 2037
 

@@ -7,7 +7,7 @@
 void print7seg(char parameter){
 
 char end_of_string[3];
-char errorstring[200];
+char errorstring[100];
 end_of_string[0]=0x0A;
 end_of_string[1]=0x0d;
 end_of_string[2]=0x00;
@@ -72,15 +72,14 @@ EnableInterrupts;
           
      else{
      
-     int k;
-     int l;
+     int k, l;
      DDRB = 0x00  ;
      DDRJ = 0x00  ;
      DDRP = 0x00  ;
            
-     strcpy(errorstring,"Error: parameter after S must be a hexidecimal character");
+     strcpy(errorstring,"Parameter after S must be a hexidecimal character");
        
-      for (k = 0; k < 46; k++) {
+      for (k = 0; k < 49; k++) {
             // Wait for data to be ready
             while((SCI1SR1 & SCI1SR1_TDRE_MASK) == 0){
             }  
@@ -108,4 +107,3 @@ EnableInterrupts;
     }
 
 }
-  

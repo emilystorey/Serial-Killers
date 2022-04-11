@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "playSong.h" 
-#include "delay_ms.h"
+#include "delay.h"
   
 #define toggle 0x04 
 #define E 246.244
@@ -23,8 +23,11 @@ interrupt 13 void speakerISR(void);
 unsigned int period;
 
 void playSong(unsigned int score[], unsigned int dur[], int x){
-
-      int j;
+   
+  int j;
+  DDRB = 0x00;
+  DDRJ = 0x00;
+  PTJ  = 0x00; 
        
       asm("sei");
       TSCR1 = 0x90; 	
@@ -38,7 +41,7 @@ void playSong(unsigned int score[], unsigned int dur[], int x){
       			
       for(j = 0; j < x; j++){	  	  	 		  
        	    period = (score[j]);
-       	    delay_ms(dur[j]);	     	      	  		    	  		  			
+       	    delay(dur[j]);	     	      	  		    	  		  			
       }
       	  
      TCTL1 = 0; 
@@ -48,6 +51,3 @@ void playSong(unsigned int score[], unsigned int dur[], int x){
   interrupt 13 void speakerISR(){
           	TC5 = TC5 + period;
   }
-  
-
- 

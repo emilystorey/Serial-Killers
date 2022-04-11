@@ -1,15 +1,17 @@
-#include <hidef.h>      /* common defines and macros */
-#include "derivative.h"      /* derivative-specific definitions */
+#include <hidef.h>     
+#include "derivative.h"      
 #include <stdlib.h>
 #include <stdio.h>
 #include "printLED.h"
 #include "print7seg.h"
 #include "playSong.h"
 #include "printError.h"
-#include "delay_ms.h"
+#include "delay.h"
 #include "checkIfPlaying.h"
+#include "serialRegisters.h"
+#include "buttonSetup.h"
+#include "printthisshit.h"
 
-// delay count to create an inaudible sound
 #define toggle 0x04 // value to toggle OC5 pin
 
 #define E 246.244
@@ -26,7 +28,7 @@
 #define ZZ 20 
 
 void serialRegisters(void);
-void buttonsetup(void);
+void buttonSetup(void);
 interrupt 21 void serialISR(void);
 interrupt 25 void porthISR(void);
 void exercise1(void) ;
@@ -34,27 +36,24 @@ void exercise2(void);
 void printLED(char);
 void print7seg(char);  
 void printError(void);
-void delay_ms(unsigned int time);
+void delay(unsigned int time);
 void playSong(unsigned int score[], unsigned int dur[], int x);
 void checkIfPlaying(int playing);
+void LEDError(void);
+void printthisshit(char parameter);
 
-int outputcount;
-int inputcount;
-int playing;
+int outputcount, inputcount,playing, stringdone, setting, j;
 char inputstring[8];
 char outputstring[8];
 char end_of_string[3];
-char errorstring[200];
-int stringdone;
-int setting;
+char errorstring[100];;
 unsigned int i;
-int j;
             
 void main() {
 // Enter which exercise to demonstrate here:
                                   setting=2; 
 //  HPRIO = 0xD4;
-  buttonsetup();
+  buttonSetup();
   serialRegisters();
   
   // Demonstrate exercise 1
@@ -98,7 +97,7 @@ void exercise2(void){
     
     // If L is found, call on function PrintLED 
     if (inputstring[0]=='L'){      
-     printLED(inputstring[1]); 
+     printthisshit(inputstring[1]); 
      
     } 
   
@@ -108,56 +107,46 @@ void exercise2(void){
     }
     
     // If M is found, call on function playtone    
-    else if (inputstring[0]=='M'){  
-        
-      playing = 1;
-      checkIfPlaying(playing);                      
+    else if (inputstring[0]=='M'){ 
+    playing = 1;                     
       if(inputstring[1] == '1'){   
           unsigned int score[] = {G,ZZ,G,A,G,C,B,G,ZZ,G,A,G,D,C};
-          unsigned int dur[]   = {40,15,25,80,80,80,160,40,15,25,80,80,80,160}; 
-          int x =15;
-          playSong(score,dur, x);             
-      }
-      if(inputstring[1] == '2'){     
+          unsigned int dur[]   = {40,15,25,80,80,80,160,40,15,25,80,80,80,160};
+          int x =14;        
+            
+          checkIfPlaying(playing); 
+          playSong(score,dur, x);
+          playing = 0;    
+          checkIfPlaying(playing);             
+      } 
+      else if(inputstring[1] == '2'){    
           unsigned int score[] = {GS,ZZ,GS,ZZ,GS,ZZ,GS,ZZ,GS,ZZ,GS,ZZ,GS,B,E,FS,GS};
           unsigned int dur[]   = {45,5,45,5,95,5,45,5,45,5,95,5,50,50,50,50,100};
           int x = 17;
-          playSong(score, dur, x);           
+          
+          checkIfPlaying(playing);
+          playSong(score, dur, x);
+          playing = 0;    
+          checkIfPlaying(playing); 
+                    
       } 
+      else{
       
-      playing = 0;    
-      checkIfPlaying(playing);                 
+      }                
    }
+   
     // All other inputs are invalid, and function printerror is called 
-    else{
-       printError();    
+   else{
+   
+    printError(); 
+       
     }
     stringdone=0;
   }  
 }
 
 
-
-void serialRegisters(void){
-  // Set baud rate to 9600
-  SCI1BDL = 0x9C;
-  SCI1BDH = 0;
-  
-  // No fancy stuff needed
-  SCI1CR1 = 0;
-  
-  // 2C = 0010110, Enable receive interrupt, transmit, receive
-  SCI1CR2 = SCI1CR2_RE_MASK | SCI1CR2_TE_MASK |SCI1CR2_RIE_MASK;
-}
-
-
-
-void buttonsetup(void) {
-  DDRH = 0x00; // Port H as input
-  PIEH = 0x01; // Enable interrupts for PTH0
-	PPSH = 0x00; // Interrupt happens on falling edge  
-}
-
+ 
  
 
 interrupt 21 void serialISR(void) {
@@ -167,7 +156,7 @@ interrupt 21 void serialISR(void) {
   //press enter to stop recieving 
   if (SCI1DRL != 0x0D) {
     
-    //daves the input to current string counter
+    //saves the input to current string counter
     inputstring[outputcount] = SCI1DRL;
     outputcount=outputcount+1;
   } 

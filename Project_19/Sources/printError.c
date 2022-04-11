@@ -4,20 +4,17 @@
 #include <stdio.h>
 #include "printError.h"
 
-
 void printError(void){
-
-char end_of_string[3];
-char errorstring[200];
-
-  int k;
-  int l;
   
-  DDRJ = 0x00;
-  PTJ =  0x00;
-  DDRB = 0x00;
-  DDRJ = 0x00;
-  DDRP = 0x00;
+char end_of_string[3];
+char errorstring[31];
+
+  int k, l;
+  
+  DDRB = 0x00;  
+  DDRP = 0xFF;
+  PTP  = 0xFF;
+  
   
   end_of_string[0]=0x0A;
   end_of_string[1]=0x0d;
@@ -25,9 +22,9 @@ char errorstring[200];
   
   EnableInterrupts;
   
-  strcpy(errorstring,"Error:input must start with L,S, or M"); 
+  strcpy(errorstring,"Input must start with L, S, or M"); 
    
-  for (k = 0; k < 36; k++) {
+  for (k = 0; k < 32; k++) {
         // Wait for data to be ready
         while((SCI1SR1 & SCI1SR1_TDRE_MASK) == 0){
         }  
@@ -54,4 +51,5 @@ char errorstring[200];
         }
         SCI1DRL = end_of_string[l]    ;
   }
+  
 }

@@ -3,17 +3,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "checkIfPlaying.h"
-#include <stdio.h>
 
 
 void checkIfPlaying(int playing){
 
-char end_of_string[3];
-char errorstring[100];
-
-  int k;
-  int l;
-  int x;
+  char end_of_string[3];
+  char errorstring[100];
+  int k, l, x;
+  
   DDRJ = 0xFF;
   PTJ = 0xFF;
   
