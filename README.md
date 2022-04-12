@@ -39,11 +39,9 @@ The user must first change the setting in the main to equal 1 to enable the firs
 
 ### Discussion 
 How can you buffer the data (for receive and transmit)?
-
 At the current setting, we can buffer 8 characters to suit the requirements of task 2, however, this can be easily extended or shortened by changing the input and output string array length, and then changing the loop within the output interrupt function porthISR to match the length of the arrays.
 
 How long (roughly) does the interrupt handler take to service the interrupt.
-
 The time to enter the interrupt  is approximately 3.75 us and to exit is 2.8us. Given an approximate 50 cycles for each serial function, the expected time to service the interrupt is approximately 10us.
 
 
