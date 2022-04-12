@@ -39,9 +39,11 @@ The user must first change the setting in the main to equal 1 to enable the firs
 
 ### Discussion 
 How can you buffer the data (for receive and transmit)?
+
 At the current setting, we can buffer 8 characters to suit the requirements of task 2, however, this can be easily extended or shortened by changing the input and output string array length, and then changing the loop within the output interrupt function porthISR to match the length of the arrays.
 
 How long (roughly) does the interrupt handler take to service the interrupt.
+
 The time to enter the interrupt  is approximately 3.75 us and to exit is 2.8us. Given an approximate 50 cycles for each serial function, the expected time to service the interrupt is approximately 10us.
 
 
@@ -54,9 +56,11 @@ If the first element of the input string is L, it completes the LED on function.
 LED On: The printLED function accepts a parameter consisting of a number between 0-8. The function will then turn on that specified LED (e.g. number 6 will turn on only the sixth LED). If the character is not an integer between 0-8, it sends an error message.
  
 If the first element of the input string is S, it completes the Sevenseg on function.
+
 SevenSeg On: The print7seg function accepts a single digit hexadecimal number (between 0-F). The function will then display the given number on the seven segment displays. If it is not a hex character, it displays an error message.
 
 If the first element of the input string is M, it completes the music function.
+
 Music on: This function accepts a single integer, and plays Happy birthday through the speaker if the input is 1 and jingle bells if the input is 2. If the integer is not a 1 or 2, it prints an error message.
 
 If the first element of the input string is not one of the above characters, it prints an error message.
@@ -84,9 +88,11 @@ The user must input M1 into serial followed by an enter to play happy birthday a
 
 ### Discussion 
 What happens if a new tune is requested before the previous one finishes? 
+
 If a new tune is requested before the previous tune is complete, the program will not play the new tune, and when the current tune is finished, it will register that a new song is ready to be played.
 
 What happens if there are unexpected characters or parsing errors from the tune string?
+
 If there is an unexpected character in the parameter section, the function will output an error message to the user telling them that the parameter must be 1 or 2 following the M.
  
  
